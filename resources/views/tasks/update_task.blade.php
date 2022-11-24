@@ -4,6 +4,9 @@
 <title>Обновление задачи</title>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<?php require_once  $_SERVER['DOCUMENT_ROOT']. '/settings.php';
+$statuses = statuses();
+?>
 </head>
 <body>
 <div class="container mt-4">
@@ -113,8 +116,12 @@
 <!-- status -->
 <div class="form-group">
                 <label for="taskInputStatus">Статус задачи</label>
-                <input value='{{ $task->status }}' type="text" id="status" name="status" class="@error('status') is-invalid @enderror form-control">
-                        @error('status')
+                <select  id="status" name="status" class="@error('status') is-invalid @enderror form-control">
+                    @foreach ($statuses as $status_key => $status_value)
+                    <option <?=$task->status == $status_key ? ' selected="selected"' : '';?> value='{{ $status_key }}'>{{ $status_value }} </option>
+                    @endforeach
+                </select> 
+                         @error('status')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror  
         </div>

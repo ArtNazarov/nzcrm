@@ -4,6 +4,10 @@
 <title>Информация по задаче</title>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<?php require_once  $_SERVER['DOCUMENT_ROOT']. '/settings.php';
+$statuses = statuses();
+?>
+</head>
 <body>
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -45,7 +49,7 @@
 <p>ID менеджера {{ $task->manager_id }} - {{ $manager->name }} <a href='/get_manager_info/{{ $task->manager_id }}'>карточка менеджера</a></p>
 <p>ID клиента {{ $task->client_id }} - {{ $client->name }} <a href='/get_client_info/{{ $task->client_id }}'>карточка клиента</a></p>
 <p>Тип задачи {{ $task->task_type }}</p>
-<p>Статус {{ $task->status }}</p>
+<p>Статус {{ $statuses[$task->status] }}</p>
  
 
  	 	
