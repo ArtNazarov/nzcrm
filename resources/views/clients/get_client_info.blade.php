@@ -4,6 +4,10 @@
 <title>Информация по клиенту</title>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<?php require_once  $_SERVER['DOCUMENT_ROOT']. '/settings.php';
+$client_statuses = client_statuses();
+?>
+</head>
 <body>
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -68,7 +72,7 @@
 <p>Email {{ $client->email }}</p>
 <p>Сайт {{ $client->site }}</p>
 <p>Источник клиента {{ $client->source }}</p>
-<p>Статус {{ $client->status }}</p>
+<p>Статус {{ $client_statuses[$client->status] }}</p>
 
 
 <p>Группа клиента {{ $client->client_group }}</p>        

@@ -105,8 +105,12 @@ $statuses = statuses();
 <!-- task_type  -->
 <div class="form-group">
                 <label for="taskInputTaskType">Тип задачи</label>
-                <input value='{{ $task->task_type }}' type="text" id="task_type" name="task_type" class="@error('task_type') is-invalid @enderror form-control">
-                        @error('task_type')
+                <select  id="task_type" name="task_type" class="@error('task_type') is-invalid @enderror form-control">
+                    @foreach ($type_tasks as $status_key => $status_value)
+                    <option <?=$task->task_type == $status_key ? ' selected="selected"' : '';?> value='{{ $status_key }}'>{{ $status_value }} </option>
+                    @endforeach
+                </select> 
+                         @error('task_type')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror  
         </div>

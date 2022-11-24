@@ -6,6 +6,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <?php require_once  $_SERVER['DOCUMENT_ROOT']. '/settings.php';
 $statuses = statuses();
+$type_tasks = type_tasks();
 ?>
 </head>
 <body>
@@ -48,7 +49,7 @@ $statuses = statuses();
 <p>Отчет {{ $task->report }}</p>
 <p>ID менеджера {{ $task->manager_id }} - {{ $manager->name }} <a href='/get_manager_info/{{ $task->manager_id }}'>карточка менеджера</a></p>
 <p>ID клиента {{ $task->client_id }} - {{ $client->name }} <a href='/get_client_info/{{ $task->client_id }}'>карточка клиента</a></p>
-<p>Тип задачи {{ $task->task_type }}</p>
+<p>Тип задачи {{ $type_tasks[$task->task_type] }}</p>
 <p>Статус {{ $statuses[$task->status] }}</p>
  
 
