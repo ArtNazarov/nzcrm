@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use App\Models\Client; 
+use App\Models\Task; 
 
 //include __DIR__ . '/stub_models.php';
 
@@ -64,9 +65,13 @@ return redirect('list_clients');
     
         $client = Client::firstWhere('id', $id);
         if ($client){
+           
+            $tasks = Task::where('manager_id', $id)->get();
+
             return view('clients.get_client_info', 
                 [
-                  'client'=>$client
+                  'client'=>$client,
+                  'tasks'=>$tasks
                 ]);
         }
         else 

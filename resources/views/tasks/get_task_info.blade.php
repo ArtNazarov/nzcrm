@@ -42,8 +42,8 @@
 <p>Дата постановки {{ $task->dstart }}</p>
 <p>Дней на исполнение {{ $task->days }}</p>
 <p>Отчет {{ $task->report }}</p>
-<p>ID менеджера {{ $task->manager_id }} - <a href='/get_manager_info/{{ $task->manager_id }}'>карточка менеджера</a></p>
-<p>ID клиента {{ $task->client_id }} - <a href='/get_client_info/{{ $task->client_id }}'>карточка клиента</a></p>
+<p>ID менеджера {{ $task->manager_id }} - {{ $manager->name }} <a href='/get_manager_info/{{ $task->manager_id }}'>карточка менеджера</a></p>
+<p>ID клиента {{ $task->client_id }} - {{ $client->name }} <a href='/get_client_info/{{ $task->client_id }}'>карточка клиента</a></p>
 <p>Тип задачи {{ $task->task_type }}</p>
 <p>Статус {{ $task->status }}</p>
  

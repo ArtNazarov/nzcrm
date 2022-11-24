@@ -8,7 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use App\Models\Manager; 
-
+use App\Models\Task; 
 //include __DIR__ . '/stub_models.php';
 
 // /home/artem/laranotes/app/Http/Controllers/MyController.php
@@ -63,11 +63,13 @@ return redirect('list_managers');
     
     public function get_manager_info($id){
     
-        $manager = Manager::firstWhere('id', $id);
+        $manager = Manager::firstWhere('id', $id);;
         if ($manager){
+            $tasks = Task::where('manager_id', $id)->get();
             return view('managers.get_manager_info', 
                 [
-                  'manager'=>$manager
+                  'manager'=>$manager,
+                  'tasks'=>$tasks
                 ]);
         }
         else 
