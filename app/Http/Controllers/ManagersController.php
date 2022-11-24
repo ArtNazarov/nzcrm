@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -9,6 +10,8 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use App\Models\Manager; 
 use App\Models\Task; 
+use App\Other\WidgetCalendar;
+
 //include __DIR__ . '/stub_models.php';
 
 // /home/artem/laranotes/app/Http/Controllers/MyController.php
@@ -161,6 +164,20 @@ $man->manager_group = $v['manager_group'];
 $man->update();
 return back()->with('status', 'Обновлено успешно ' . $man->name . ' ' . $man->email );
  
+}
+
+
+function control_panel(){
+    
+    $year = '2022';
+    $records = Task::all();
+    $date_field = 'dstart';
+    $cap_field = 'description';
+    $link = '/get_task_info';
+    $WC = new WidgetCalendar($year, $records, $date_field, $cap_field, $link);
+    $widgetCalendar = $WC->widget();
+    return view('welcome',
+            ['widgetCalendar'=>$widgetCalendar]);
 }
     
 }
