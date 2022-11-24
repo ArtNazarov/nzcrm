@@ -176,7 +176,7 @@
 
 <div class="form-group">
                 <label for="clientDocDate">Дата договора</label>
-                <input type="text" id="doc_date" name="doc_date" class="@error('doc_date') is-invalid @enderror form-control">
+                <input type="date" id="doc_date" name="doc_date" class="@error('doc_date') is-invalid @enderror form-control">
                         @error('doc_date')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror  

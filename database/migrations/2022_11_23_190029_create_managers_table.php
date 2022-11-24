@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('adr'); // адрес
             $table->string('pass'); // номер паспорта
             $table->string('phone'); // телефон
-            $table->string('birthday'); // дата рождения
+            $table->date('birthday'); // дата рождения
             $table->string('inn'); // ИНН
             $table->string('wday'); // дата найма
             $table->string('percent'); // процент

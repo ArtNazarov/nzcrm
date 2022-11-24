@@ -37,7 +37,7 @@ return new class extends Migration
             //мелкий опт, оптовики, дилеры, сетевые магазины,
             //поставщики, устаревшее
             $table->string('doc_num'); // Номер договора
-            $table->string('doc_date');  // Дата договора
+            $table->date('doc_date');  // Дата договора
             $table->string('rs'); // Расчетный счет
             $table->string('bank'); // Банк
             $table->string('ks'); // Корр счет

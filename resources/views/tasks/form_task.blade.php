@@ -22,7 +22,7 @@
         
     <div class="form-group">
         <label for="taskInputDplan">Дата по плану</label>
-        <input type="text" id="dplan" name="dplan" class="@error('dplan') is-invalid @enderror form-control">
+        <input type="date" id="dplan" name="dplan" class="@error('dplan') is-invalid @enderror form-control">
             @error('dplan')
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
             @enderror
@@ -32,7 +32,7 @@
 <!-- dstart -->	
      <div class="form-group">
                 <label for="taskInputDstart">Дата постановки</label>
-                <input type="text" id="dstart" name="dstart" class="@error('dstart') is-invalid @enderror form-control">
+                <input type="date" id="dstart" name="dstart" class="@error('dstart') is-invalid @enderror form-control">
                         @error('dstart')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror  
@@ -61,7 +61,8 @@
 <!-- report -->
  <div class="form-group">
                 <label for="taskInputReport">Отчет</label>
-                <input type="text" id="report" name="report" class="@error('report') is-invalid @enderror form-control">
+                <textarea  id="report" name="report" class="@error('report') is-invalid @enderror form-control">
+                </textarea>
                         @error('report')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror  

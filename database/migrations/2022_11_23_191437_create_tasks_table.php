@@ -17,11 +17,11 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             
-            $table->string('dplan'); // запланировано на дату
-            $table->string('dstart'); // поставлено 
+            $table->date('dplan'); // запланировано на дату
+            $table->date('dstart'); // поставлено 
             $table->string('days'); // дней на исполнение
             $table->string('description'); // описание
-            $table->string('report'); // отчет
+            $table->text('report'); // отчет
             $table->string('manager_id'); // кто назначен
             $table->string('client_id'); // кто клиент
             $table->string('task_type'); // тип задачи

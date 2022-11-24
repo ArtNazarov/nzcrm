@@ -60,7 +60,7 @@
 <!-- birthday -->
  <div class="form-group">
                 <label for="exampleInputBirthday">День рождения</label>
-                <input type="text" id="birthday" name="birthday" class="@error('birthday') is-invalid @enderror form-control">
+                <input type="date" id="birthday" name="birthday" class="@error('birthday') is-invalid @enderror form-control">
                         @error('birthday')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror  
@@ -78,7 +78,7 @@
 
 <div class="form-group">
                 <label for="exampleInputWday">Дата найма</label>
-                <input type="text" id="wday" name="wday" class="@error('wday') is-invalid @enderror form-control">
+                <input type="date" id="wday" name="wday" class="@error('wday') is-invalid @enderror form-control">
                         @error('wday')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror  

@@ -25,7 +25,7 @@
         
     <div class="form-group">
         <label for="taskInputDplan">Дата по плану</label>
-        <input value='{{ $task->dplan }}' type="text" id="dplan" name="dplan" class="@error('dplan') is-invalid @enderror form-control">
+        <input value='{{ $task->dplan }}' type="date" id="dplan" name="dplan" class="@error('dplan') is-invalid @enderror form-control">
             @error('dplan')
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
             @enderror
@@ -35,7 +35,7 @@
 <!-- dstart -->	
      <div class="form-group">
                 <label for="taskInputDstart">Дата постановки</label>
-                <input value='{{ $task->dstart }}' type="text" id="dstart" name="dstart" class="@error('dstart') is-invalid @enderror form-control">
+                <input value='{{ $task->dstart }}' type="date" id="dstart" name="dstart" class="@error('dstart') is-invalid @enderror form-control">
                         @error('dstart')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror  
@@ -64,8 +64,8 @@
 <!-- report -->
  <div class="form-group">
                 <label for="taskInputReport">Отчет</label>
-                <input value='{{ $task->report }}' type="text" id="report" name="report" class="@error('report') is-invalid @enderror form-control">
-                        @error('report')
+                <textarea  id="report" name="report" class="@error('report') is-invalid @enderror form-control">{{ $task->report }}</textarea>
+                         @error('report')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror  
         </div> 
