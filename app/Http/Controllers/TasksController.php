@@ -64,10 +64,15 @@ return redirect('list_tasks');
     public function get_task_info($id){
     
         $task = Task::firstWhere('id', $id);
+        $manager = Manager::firstWhere('id', $task->manager_id);
+        $client = Client::firstWhere('id', $task->client_id);
+        
         if ($task){
             return view('tasks.get_task_info', 
                 [
-                  'task'=>$task
+                  'task'=>$task,
+                  'manager'=>$manager,
+                  'client'=>$client
                 ]);
         }
         else 
