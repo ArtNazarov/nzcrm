@@ -70,10 +70,17 @@
                         @enderror  
         </div> 
 
+ 
 <!-- manager_id  -->  	 	
 <div class="form-group">
-                <label for="taskInputManagerId">ID менеджера (смотри в карточке)</label>
-                <input value='{{ $task->manager_id }}' type="text" id="manager_id" name="manager_id" class="@error('manager_id') is-invalid @enderror form-control">
+                <label for="taskInputManagerId">Менеджер</label>
+                
+                <select  id="manager_id" name="manager_id" class="@error('manager_id') is-invalid @enderror form-control">
+                    @foreach ($managers as $manager)
+                    <option <?=$task->manager_id == $manager->id ? ' selected="selected"' : '';?>  value='{{ $manager->id }}'>{{ $manager->name }} </option>
+                    @endforeach
+                </select>
+                
                         @error('manager_id')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror  
@@ -81,12 +88,16 @@
 
 <!-- client_id  -->  	 	
 <div class="form-group">
-                <label for="taskInputClientId">ID клиента (смотри в карточке)</label>
-                <input value='{{ $task->client_id }}' type="text" id="client_id" name="client_id" class="@error('client_id') is-invalid @enderror form-control">
-                        @error('manager_id')
+                <label for="taskInputClientId">Клиент</label>
+                <select  id="client_id" name="client_id" class="@error('client_id') is-invalid @enderror form-control">
+                    @foreach ($clients as $client)
+                    <option <?=$task->client_id == $client->id ? ' selected="selected"' : '';?>  value='{{ $client->id }}'>{{ $client->name }} </option>
+                    @endforeach
+                </select> 
+                        @error('client_id')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror  
-        </div> 
+        </div>
  
 <!-- task_type  -->
 <div class="form-group">

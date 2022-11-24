@@ -127,9 +127,14 @@ return back()->with('status', 'Добавлено успешно');
      }
      
         public function fedit_task($id){
-            
+            $clients = Client::all();
+            $managers = Manager::all();
+                
             $task = Task::firstWhere('id', $id);
-            return view('tasks.update_task', ['task'=>$task]);
+            return view('tasks.update_task', ['task'=>$task,
+                'clients' => $clients,
+                'managers' => $managers
+                ]);
      }
      
      public function edit_task(Request $request){
