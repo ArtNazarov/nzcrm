@@ -8,7 +8,8 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use App\Models\Task; 
-
+use App\Models\Client; 
+use App\Models\Manager; 
 //include __DIR__ . '/stub_models.php';
 
 // /home/artem/laranotes/app/Http/Controllers/MyController.php
@@ -88,7 +89,8 @@ $v=$request->validate([
 'manager_id' => 'required',
 'client_id' => 'required',
 'task_type' => 'required',
-'status' => 'required' 
+'status' => 'required',
+        
 ]);
 $tk = new Task();
 
@@ -115,7 +117,13 @@ return back()->with('status', 'Добавлено успешно');
 }
      
      public function show_form(){
-         return view('tasks.form_task');
+         $clients = Client::all();
+         $managers = Manager::all();
+         
+         return view('tasks.form_task',
+                 ['clients'=> $clients,
+                  'managers'=> $managers]
+                 );
      }
      
         public function fedit_task($id){

@@ -69,8 +69,14 @@
 
 <!-- manager_id  -->  	 	
 <div class="form-group">
-                <label for="taskInputManagerId">ID менеджера (смотри в карточке)</label>
-                <input type="text" id="manager_id" name="manager_id" class="@error('manager_id') is-invalid @enderror form-control">
+                <label for="taskInputManagerId">Менеджер</label>
+                
+                <select  id="manager_id" name="manager_id" class="@error('manager_id') is-invalid @enderror form-control">
+                    @foreach ($managers as $manager)
+                    <option value='{{ $manager->id }}'>{{ $manager->name }} </option>
+                    @endforeach
+                </select>
+                
                         @error('manager_id')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror  
@@ -78,8 +84,12 @@
 
 <!-- client_id  -->  	 	
 <div class="form-group">
-                <label for="taskInputClientId">ID клиента (смотри в карточке)</label>
-                <input type="text" id="client_id" name="client_id" class="@error('client_id') is-invalid @enderror form-control">
+                <label for="taskInputClientId">Клиент</label>
+                <select  id="client_id" name="client_id" class="@error('client_id') is-invalid @enderror form-control">
+                    @foreach ($clients as $client)
+                    <option value='{{ $client->id }}'>{{ $client->name }} </option>
+                    @endforeach
+                </select> 
                         @error('client_id')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror  
