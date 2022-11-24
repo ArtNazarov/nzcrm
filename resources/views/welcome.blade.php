@@ -50,10 +50,25 @@
     <h2><a href="/list_tasks"> Задачи </a></h2>
     
     <a href="/add_task"> Поставить задачу на контроль </a> 
+    
+    <h3>Календарь</h3>
+    
+     <select id="year" name='year'>
+        <option value='2022'>2022</option> 
+        <option value='2023'>2023</option> 
+        <option value='2024'>2024</option>
+    </select>
+    
+    <div id='calendar_widget'>
+    
+        {!! $widgetCalendar !!}
+    
+    </div>
+   
  
 
 </div>
-
+<script src="{{ asset('/js/widgetcalendar.js') }}"></script>
 </body> 
 </html>
     

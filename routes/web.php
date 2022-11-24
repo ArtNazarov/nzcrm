@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+ 
+Route::get('/', 'App\Http\Controllers\ManagersController@control_panel');
 
 
 Route::get('/list_managers', 'App\Http\Controllers\ManagersController@list_managers');
@@ -26,6 +25,7 @@ Route::get('/del_manager/{id}', 'App\Http\Controllers\ManagersController@del_man
 Route::get('/fedit_manager/{id}', 'App\Http\Controllers\ManagersController@fedit_manager');
 Route::post('/edit_manager', 'App\Http\Controllers\ManagersController@edit_manager');
 Route::post('/search_manager', 'App\Http\Controllers\ManagersController@search_manager');
+Route::get('/widget_calendar/{year}', 'App\Http\Controllers\ManagersController@widget_calendar');
 
 
 Route::get('/list_clients', 'App\Http\Controllers\ClientsController@list_clients');

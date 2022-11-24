@@ -179,6 +179,17 @@ function control_panel(){
     return view('welcome',
             ['widgetCalendar'=>$widgetCalendar]);
 }
+
+function widget_calendar($year){
     
+    $records = Task::all();
+    $date_field = 'dstart';
+    $cap_field = 'description';
+    $link = '/get_task_info';
+    $WC = new WidgetCalendar($year, $records, $date_field, $cap_field, $link);
+    return $widgetCalendar = $WC->widget();
+    
+    
+}
 }
 

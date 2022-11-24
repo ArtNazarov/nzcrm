@@ -6,6 +6,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <?php require_once  $_SERVER['DOCUMENT_ROOT']. '/settings.php';
 $statuses = statuses();
+$type_tasks = type_tasks();
 ?>
 </head>
 <body>
