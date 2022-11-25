@@ -11,19 +11,7 @@ $type_tasks = type_tasks();
 <body>
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href=".">База менеджеров</a>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-       
-        <li class="nav-item">
-          <a class="nav-link" href="/add_manager">Добавить в базу</a>
-        </li>
-       
-      </ul>
+    @include("navigation")
       <form class="d-flex" action='/search_manager' method='post'>
                   {{ csrf_field() }}
         <input class="form-control me-2" type="search" name='q' id='q' placeholder="Search" aria-label="Search">
@@ -83,6 +71,9 @@ $type_tasks = type_tasks();
             <a href="/get_task_info/{{ $task->id }}">   {{ $task->description }} </a>
         </div>
         <div class='col'>
+               {{ $task->price }} </a>
+        </div>
+        <div class='col'>
             <a href='/del_task/{{ $task->id }}'>Удалить из базы</a>
         </div>
         <div class='col'>
@@ -99,12 +90,14 @@ $type_tasks = type_tasks();
     <div class="row">
         
     @foreach($type_tasks as $task_key => $type_status)
+    
     <div class="col" style='border:thin solid lightblue'>
         {{ $type_status }} <br/>
-        
+        <?php $s = 0; ?>    
         @forelse($tasks as $task)
         
                 @if ($task->task_type == $task_key)
+                <?php $s += $task->price; ?>
         <div class="row" style='border:thin dashed lime'>
     
                     <div class='col'>
@@ -123,6 +116,7 @@ $type_tasks = type_tasks();
             Нет задач в данной группе
         @endforelse
         
+        {{ $s }}
     </div>    
    
     @endforeach
@@ -137,10 +131,11 @@ $type_tasks = type_tasks();
     @foreach($statuses as $status_key => $status_value)
     <div class="col" style='border:thin solid lightblue'>
         {{ $status_value }} <br/>
-        
+        <?php $s = 0; ?>
         @forelse($tasks as $task)
-        
+                  
                 @if ($task->status == $status_key)
+                <?php $s += $task->price; ?>
         <div class="row" style='border:thin dashed lime'>
     
                     <div class='col'>
@@ -158,7 +153,8 @@ $type_tasks = type_tasks();
         @empty
             Нет задач в данной группе
         @endforelse
-        
+    
+        {{ $s }}    
     </div>    
    
     @endforeach
@@ -172,9 +168,7 @@ $type_tasks = type_tasks();
 
 </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-
+@include("footer")  
 
 </body><!-- comment -->
 </html>

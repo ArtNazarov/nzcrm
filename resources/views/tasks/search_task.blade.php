@@ -7,19 +7,7 @@
 <body>
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href=".">База задач</a>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-       
-        <li class="nav-item">
-          <a class="nav-link" href="/add_task">Добавить в базу</a>
-        </li>
-       
-      </ul>
+    @include("navigation")
       <form class="d-flex" action='/searcher_task' method='post'>
         {{ csrf_field() }}
         <input value ='{{ $q }}' class="form-control me-2" name='q' id='q' type="search" placeholder="Search" aria-label="Search">
@@ -61,6 +49,7 @@
     {{ $tasks->links() }}
 
 </div>
+@include('footer')
 
 </body><!-- comment -->
 </html>
