@@ -6,6 +6,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <?php require_once  $_SERVER['DOCUMENT_ROOT']. '/settings.php';
 $client_statuses = client_statuses();
+$sources = sources();
+$client_groups = client_groups();
 ?>
 </head>
 <body>
@@ -158,8 +160,12 @@ $client_statuses = client_statuses();
 
 <div class="form-group">
                 <label for="clientSource">Источник клиента</label>
-                <input type="text" id="source" name="source" class="@error('source') is-invalid @enderror form-control">
-                        @error('source')
+                <select  id="source" name="source" class="@error('source') is-invalid @enderror form-control">
+                    @foreach ($sources as $source_key => $source_value)
+                    <option value='{{ $source_key }}'>{{ $source_value }} </option>
+                    @endforeach
+                </select> 
+                         @error('source')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror  
         </div>
@@ -180,8 +186,12 @@ $client_statuses = client_statuses();
 
 <div class="form-group">
                 <label for="clientClientGroup">Группа клиента</label>
-                <input type="text" id="client_group" name="client_group" class="@error('client_group') is-invalid @enderror form-control">
-                        @error('client_group')
+                <select  id="client_group" name="client_group" class="@error('client_group') is-invalid @enderror form-control">
+                    @foreach ($client_groups as $group_key => $group_value)
+                    <option value='{{ $group_key }}'>{{ $group_value }} </option>
+                    @endforeach
+                </select> 
+                         @error('client_group')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror  
         </div>   

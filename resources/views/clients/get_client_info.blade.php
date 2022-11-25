@@ -6,6 +6,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <?php require_once  $_SERVER['DOCUMENT_ROOT']. '/settings.php';
 $client_statuses = client_statuses();
+$sources = sources();
+$client_groups = client_groups();
 ?>
 </head>
 <body>
@@ -59,11 +61,11 @@ $client_statuses = client_statuses();
         
 <p>Email {{ $client->email }}</p>
 <p>Сайт {{ $client->site }}</p>
-<p>Источник клиента {{ $client->source }}</p>
+<p>Источник клиента {{ $sources[ $client->source ] }}</p>
 <p>Статус {{ $client_statuses[$client->status] }}</p>
 
 
-<p>Группа клиента {{ $client->client_group }}</p>        
+<p>Группа клиента {{ $client_groups[ $client->client_group ] }}</p>        
         
     </div>
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">

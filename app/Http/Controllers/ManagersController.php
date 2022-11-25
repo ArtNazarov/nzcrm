@@ -72,7 +72,7 @@ return redirect('list_managers');
     
         $manager = Manager::firstWhere('id', $id);;
         if ($manager){
-            $tasks = Task::where('manager_id', $id)->get();
+            $tasks = Task::where('manager_id', $id)->join('clients', 'clients.id', '=', 'tasks.client_id')->get();
             return view('managers.get_manager_info', 
                 [
                   'manager'=>$manager,

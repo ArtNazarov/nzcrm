@@ -7,6 +7,11 @@
 <?php require_once  $_SERVER['DOCUMENT_ROOT']. '/settings.php';
 $statuses = statuses();
 $type_tasks = type_tasks();
+
+$client_statuses = client_statuses();
+$sources = sources();
+$client_groups = client_groups()
+
 ?>
 <body>
 <div class="container">
@@ -73,6 +78,23 @@ $type_tasks = type_tasks();
         <div class='col'>
                {{ $task->price }} </a>
         </div>
+       
+        <div class='col'>
+            <a href='/get_client_info/{{ $task->client_id }}'> {{ $task->name }} </a>
+        </div>
+         <div class='col'>
+           {{ $task->phone }}
+         </div>
+         <div class='col'>
+           {{ $client_statuses[ $task->status ] }}
+         </div>
+         <div class='col'>
+           {{ $sources [ $task->source ] }}
+         </div>
+         <div class='col'>
+           {{ $client_groups [ $task->client_group ] }}
+         </div>
+        
         <div class='col'>
             <a href='/del_task/{{ $task->id }}'>Удалить из базы</a>
         </div>

@@ -37,3 +37,21 @@ function type_tasks(){
         'sobes' => 'Собеседование'
     ];        
 }
+
+
+function sources(){
+    return 
+    [
+        'ads' => 'Реклама',
+        'recommend' => 'Рекомендации',
+        'etc' => 'Прочее'
+       
+    ];        
+}
+
+function client_groups(){
+    return [
+        'retail' => 'Розничный',
+        'wholesaler' => 'Оптовик'
+    ];
+}
