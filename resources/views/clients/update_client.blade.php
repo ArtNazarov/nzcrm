@@ -132,7 +132,7 @@ $client_groups = client_groups();
 <!-- glavbuh --> 	 	  
 <div class="form-group">
                 <label for="clientGlavbuh">Глав. бух</label>
-                <input  value='{{ $client->glavbuf }}' type="text" id="glavbuh" name="glavbuh" class="@error('glavbuh') is-invalid @enderror form-control">
+                <input  value='{{ $client->glavbuh }}' type="text" id="glavbuh" name="glavbuh" class="@error('glavbuh') is-invalid @enderror form-control">
                         @error('glavbuh')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror  
@@ -215,7 +215,7 @@ $client_groups = client_groups();
 
 <div class="form-group">
                 <label for="clientRs">Расчетный счет</label>
-                <input type="text" id="rs" name="rs" class="@error('rs') is-invalid @enderror form-control">
+                <input value='{{ $client->rs }}' type="text" id="rs" name="rs" class="@error('rs') is-invalid @enderror form-control">
                         @error('rs')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror  

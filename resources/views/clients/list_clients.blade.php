@@ -4,6 +4,11 @@
 <title>Список клиентов</title>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<?php require_once  $_SERVER['DOCUMENT_ROOT']. '/settings.php';
+$client_statuses = client_statuses();
+$sources = sources();
+$client_groups = client_groups();
+?>
 <body>
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -32,6 +37,20 @@
         <div class='col'>
             <a href="/get_client_info/{{ $client->id }}">   {{ $client->name }} </a>
         </div>
+        
+         <div class='col'>
+              {{ $sources [ $client->source ] }} 
+         </div><!-- comment -->
+         
+          <div class='col'>
+              {{ $client_groups[ $client->client_group ] }} 
+          </div><!-- comment -->
+       
+        <div class='col'>
+              {{ $client_statuses[ $client->status ] }} </a>
+        </div>
+        
+        
         <div class='col'>
             <a href='/del_client/{{ $client->id }}'>Удалить из базы</a>
         </div>

@@ -9,7 +9,8 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use App\Models\Manager; 
-use App\Models\Task; 
+use App\Models\Task;
+use App\Models\Client;
 use App\Other\WidgetCalendar;
 
   require_once  $_SERVER['DOCUMENT_ROOT']. '/settings.php';
@@ -197,6 +198,44 @@ function control_panel(){
         $voronka_by_task_types[ $type_key ] = Task::where('task_type', '=', $type_key)->sum('price');
     };
     
+    $client_statuses = client_statuses();
+    
+    $voronka_by_client_statuses = [];
+ 
+    var_dump($client_statuses);
+    foreach ($client_statuses as $cl_key => $cl_value){
+        $voronka_by_client_statuses [ $cl_key ] = Client::where('clients.status', '=', $cl_key)->join('tasks', 'tasks.client_id', '=', 'clients.id')->sum('price');
+    };
+    
+    $sources = sources();
+    
+    $voronka_by_sources = [];
+ 
+    /* 
+Select sum(tasks.price) from clients
+left join tasks on clients.id = tasks.client_id
+WHERE clients.source = 'ads'
+     */
+    foreach ($sources  as $s_key => $s_value){
+        $voronka_by_sources[ $s_key ] = Client::where('clients.source', '=', $s_key)->join('tasks', 'tasks.client_id', '=', 'clients.id')->sum('price');
+    };
+    
+    $client_groups = client_groups();
+    
+    
+    $voronka_by_client_groups = [];
+ /*
+  Select sum(tasks.price) from clients
+left join tasks on clients.id = tasks.client_id
+WHERE clients.client_group = 'retail'
+  */
+    foreach ($client_groups as $cg_key => $cg_value){
+        $voronka_by_client_groups[ $cg_key ] = Client::where('clients.client_group', '=', $cg_key)->join('tasks', 'tasks.client_id', '=', 'clients.id')->sum('price');
+    };
+     
+            
+            
+    
     
 
     
@@ -206,8 +245,15 @@ function control_panel(){
             ['widgetCalendar'=>$widgetCalendar,
              'voronka_by_statuses'=>$voronka_by_statuses,
              'voronka_by_task_types'=>$voronka_by_task_types,
+             'voronka_by_sources' => $voronka_by_sources,
+             'voronka_by_client_groups'=>$voronka_by_client_groups,
+             'voronka_by_client_statuses'=>$voronka_by_client_statuses,
+                
              'statuses' => $statuses,
-             'type_tasks' => $type_tasks
+             'type_tasks' => $type_tasks,
+             'client_statuses' => $client_statuses,
+             'client_groups' => $client_groups,
+             'sources' => $sources
             ]);
 }
 

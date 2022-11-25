@@ -48,6 +48,26 @@
         </div>
     @endforeach
     
+    <h3>Воронка по источникам клиентов</h3>
+    @foreach ($voronka_by_sources as $key => $value)
+        <div class='row'>
+           {{ $sources[$key] }} -  {{ $voronka_by_sources[$key] }}
+        </div>
+    @endforeach
+    
+    <h3>Воронка по статусам клиентов </h3>
+    @foreach ($voronka_by_client_statuses as $key => $value)
+        <div class='row'>
+           {{ $client_statuses[$key] }} -  {{ $voronka_by_client_statuses[$key] }}
+        </div>
+    @endforeach
+    
+    <h3>Воронка по группам клиентов </h3>
+    @foreach ($voronka_by_client_groups as $key => $value)
+        <div class='row'>
+           {{ $client_groups[$key] }} -  {{ $voronka_by_client_groups[$key] }}
+        </div>
+    @endforeach
     
     <h3>Календарь</h3>
     
