@@ -4,7 +4,7 @@
 
 скриншоты
 
-![](https://www.dropbox.com/s/1sz0ae7g12ezl20/Screenshot_20221125_134323.png?raw=1)
+![](https://www.dropbox.com/s/mrcl6c05wl337gs/Screenshot%202022-11-25%20at%2014-00-05%20%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%D0%BE%D0%B2.png?raw=1)
 
 ![](https://www.dropbox.com/s/7lei87hx2q93q33/Screenshot_20221124_133851.png?raw=1)
 
