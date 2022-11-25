@@ -4,6 +4,8 @@
 
 скриншоты
 
+![](https://www.dropbox.com/s/1sz0ae7g12ezl20/Screenshot_20221125_134323.png?raw=1)
+
 ![](https://www.dropbox.com/s/7lei87hx2q93q33/Screenshot_20221124_133851.png?raw=1)
 
 ![](https://www.dropbox.com/s/7uwyec62213p0ee/Screenshot_20221124_135637.png?raw=1)
