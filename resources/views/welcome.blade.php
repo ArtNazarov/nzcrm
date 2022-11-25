@@ -34,6 +34,21 @@
     
     <a href="/add_task"> Поставить задачу на контроль </a> 
     
+    <h3>Воронка по статусам общая</h3>
+    @foreach ($voronka_by_statuses as $key => $value)
+    <div class='row'>
+       {{ $statuses[$key] }} -  {{ $voronka_by_statuses[$key] }}
+    </div>
+    @endforeach
+    
+    <h3>Воронка по типам задач общая</h3>
+    @foreach ($voronka_by_task_types as $key => $value)
+        <div class='row'>
+           {{ $type_tasks[$key] }} -  {{ $voronka_by_task_types[$key] }}
+        </div>
+    @endforeach
+    
+    
     <h3>Календарь</h3>
     
      <select id="year" name='year'>

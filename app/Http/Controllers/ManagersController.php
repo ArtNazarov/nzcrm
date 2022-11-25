@@ -12,6 +12,10 @@ use App\Models\Manager;
 use App\Models\Task; 
 use App\Other\WidgetCalendar;
 
+  require_once  $_SERVER['DOCUMENT_ROOT']. '/settings.php';
+
+ 
+
 //include __DIR__ . '/stub_models.php';
 
 // /home/artem/laranotes/app/Http/Controllers/MyController.php
@@ -174,10 +178,37 @@ function control_panel(){
     $date_field = 'dstart';
     $cap_field = 'description';
     $link = '/get_task_info';
+    
+    $statuses = statuses();
+    $type_tasks = type_tasks();
+    
+    $voronka_by_statuses = [];
+    
+    foreach ($statuses as $status_key => $status_value){
+        $voronka_by_statuses[ $status_key ] = Task::where('status', '=', $status_key)->sum('price');
+    };
+    
+    
+    $voronka_by_task_types = [];
+    
+    
+    
+    foreach ($type_tasks as $type_key => $type_value){
+        $voronka_by_task_types[ $type_key ] = Task::where('task_type', '=', $type_key)->sum('price');
+    };
+    
+    
+
+    
     $WC = new WidgetCalendar($year, $records, $date_field, $cap_field, $link);
     $widgetCalendar = $WC->widget();
     return view('welcome',
-            ['widgetCalendar'=>$widgetCalendar]);
+            ['widgetCalendar'=>$widgetCalendar,
+             'voronka_by_statuses'=>$voronka_by_statuses,
+             'voronka_by_task_types'=>$voronka_by_task_types,
+             'statuses' => $statuses,
+             'type_tasks' => $type_tasks
+            ]);
 }
 
 function widget_calendar($year){
