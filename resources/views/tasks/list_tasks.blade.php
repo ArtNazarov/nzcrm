@@ -45,6 +45,9 @@
             <a href="/get_task_info/{{ $task->id }}">   {{ $task->description }} </a>
         </div>
         <div class='col'>
+             {{ $task->price }} </a>
+        </div>
+        <div class='col'>
             <a href='/del_task/{{ $task->id }}'>Удалить из базы</a>
         </div>
         <div class='col'>

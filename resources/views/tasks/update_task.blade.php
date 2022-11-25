@@ -28,6 +28,15 @@ $type_tasks = type_tasks();
 
         
     <div class="form-group">
+        
+        <label for="taskInputPrice">Сумма</label>
+        <input value='{{ $task->price }}' type="price" id="price" name="price" class="@error('price') is-invalid @enderror form-control">
+            @error('price')
+                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+            @enderror
+    </div>   
+   
+    <div class="form-group">   
         <label for="taskInputDplan">Дата по плану</label>
         <input value='{{ $task->dplan }}' type="date" id="dplan" name="dplan" class="@error('dplan') is-invalid @enderror form-control">
             @error('dplan')

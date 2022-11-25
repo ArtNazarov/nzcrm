@@ -25,6 +25,15 @@ $type_tasks = type_tasks();
         {{ csrf_field() }}
         
     <div class="form-group">
+        
+    <label for="taskInputPrice">Сумма</label>
+        <input type="price" id="price" name="price" class="@error('price') is-invalid @enderror form-control">
+            @error('price')
+                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+            @enderror
+    </div>     
+        
+    <div class="form-group">    
         <label for="taskInputDplan">Дата по плану</label>
         <input type="date" id="dplan" name="dplan" class="@error('dplan') is-invalid @enderror form-control">
             @error('dplan')

@@ -4,6 +4,10 @@
 <title>Список менеджеров</title>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<?php require_once  $_SERVER['DOCUMENT_ROOT']. '/settings.php';
+$statuses = statuses();
+$type_tasks = type_tasks();
+?>
 <body>
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -89,6 +93,79 @@
     @empty 
         Нет задач в базе
     @endforelse
+    
+    <h2>Канбан (по типам задач)</h2>
+    
+    <div class="row">
+        
+    @foreach($type_tasks as $task_key => $type_status)
+    <div class="col" style='border:thin solid lightblue'>
+        {{ $type_status }} <br/>
+        
+        @forelse($tasks as $task)
+        
+                @if ($task->task_type == $task_key)
+        <div class="row" style='border:thin dashed lime'>
+    
+                    <div class='col'>
+            <a href="/get_task_info/{{ $task->id }}">   {{ $task->description }} </a>
+                    </div>
+                    <div class='col'>
+            <a href='/del_task/{{ $task->id }}'>Удалить</a>
+                    </div>
+                    <div class='col'>
+            <a href='/fedit_task/{{ $task->id }}'>Изменить</a>
+                    </div>
+        </div>
+                @endif
+        
+        @empty
+            Нет задач в данной группе
+        @endforelse
+        
+    </div>    
+   
+    @endforeach
+
+        
+    </div>
+    
+    <h2>Канбан (по статусам задач)</h2>
+    
+    <div class="row">
+        
+    @foreach($statuses as $status_key => $status_value)
+    <div class="col" style='border:thin solid lightblue'>
+        {{ $status_value }} <br/>
+        
+        @forelse($tasks as $task)
+        
+                @if ($task->status == $status_key)
+        <div class="row" style='border:thin dashed lime'>
+    
+                    <div class='col'>
+            <a href="/get_task_info/{{ $task->id }}">   {{ $task->description }} </a>
+                    </div>
+                    <div class='col'>
+            <a href='/del_task/{{ $task->id }}'>Удалить</a>
+                    </div>
+                    <div class='col'>
+            <a href='/fedit_task/{{ $task->id }}'>Изменить</a>
+                    </div>
+        </div>
+                @endif
+        
+        @empty
+            Нет задач в данной группе
+        @endforelse
+        
+    </div>    
+   
+    @endforeach
+
+        
+    </div>
+    
     
     
  

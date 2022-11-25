@@ -26,7 +26,8 @@ return new class extends Migration
             $table->string('client_id'); // кто клиент
             $table->string('task_type'); // тип задачи
             $table->string('status'); // состояние задачи
-            
+            $table->integer('price'); // сумма
+
         });
     }
 

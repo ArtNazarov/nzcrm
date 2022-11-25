@@ -43,6 +43,7 @@ $type_tasks = type_tasks();
 
 <h3>Номер задачи {{ $task->id  }}</h3>
  
+<p>Сумма {{ $task->price  }}</p
 <p>План {{ $task->dplan  }}</p>
 <p>Дата постановки {{ $task->dstart }}</p>
 <p>Дней на исполнение {{ $task->days }}</p>

@@ -86,15 +86,16 @@ return redirect('list_tasks');
           	 	 	 	
           	 	 	 	       	
 $v=$request->validate([
-'dplan' => 'required',
-'dstart' => 'required',
+'dplan' => 'required|date',
+'dstart' => 'required|date',
 'days' => 'required',
 'description' => 'required',
 'report' => 'required',
-'manager_id' => 'required',
-'client_id' => 'required',
+'manager_id' => 'required|integer',
+'client_id' => 'required|integer',
 'task_type' => 'required',
 'status' => 'required',
+'price' => 'nullable|integer',
         
 ]);
 $tk = new Task();
@@ -110,6 +111,7 @@ $tk->manager_id = $v['manager_id'];
 $tk->client_id = $v['client_id'];  
 $tk->task_type  = $v['task_type'];
 $tk->status = $v['status']; 
+$tk->price = $v['price']; 
   
 
 
@@ -145,16 +147,17 @@ return back()->with('status', 'Добавлено успешно');
      public function edit_task(Request $request){
 
 $v=$request->validate([
-'dplan' => 'required',
-'dstart' => 'required',
+'dplan' => 'required|date',
+'dstart' => 'required|date',
 'days' => 'required',
 'description' => 'required',
 'report' => 'required',
-'manager_id' => 'required',
-'client_id' => 'required',
+'manager_id' => 'required|integer',
+'client_id' => 'required|integer',
 'task_type' => 'required',
-'status' => 'required' 
-]);        
+'status' => 'required',
+'price' => 'nullable|integer'   
+]);
          
 $id = $request->input('id');
  
@@ -171,6 +174,7 @@ $tk->manager_id = $v['manager_id'];
 $tk->client_id = $v['client_id'];  
 $tk->task_type  = $v['task_type'];
 $tk->status = $v['status'];
+$tk->price = $v['price'];
 
 
 $tk->update();
