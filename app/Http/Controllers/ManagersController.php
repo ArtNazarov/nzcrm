@@ -13,6 +13,8 @@ use App\Models\Task;
 use App\Models\Client;
 use App\Other\WidgetCalendar;
 
+use Illuminate\Support\Facades\Gate;
+
   require_once  $_SERVER['DOCUMENT_ROOT']. '/settings.php';
 
  
@@ -62,7 +64,9 @@ class ManagersController extends BaseController
     
     
     public function del_manager($id){
-        
+        if (! Gate::allows('req_admin')) {
+            abort(403);
+        };        
 $manager = Manager::firstWhere('id', $id);
 $manager->delete();
 return redirect('list_managers');

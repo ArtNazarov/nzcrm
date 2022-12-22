@@ -54,7 +54,7 @@ class ClientsController extends BaseController
     
     
     public function del_client($id){
-        
+              
 $client = Client::firstWhere('id', $id);
 $client->delete();
 return redirect('list_clients');
