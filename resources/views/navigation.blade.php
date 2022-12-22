@@ -39,11 +39,30 @@
             <li><a class="dropdown-item" href="/add_task">Добавить задачу</a></li>
           </ul>
         </li>
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Пользователь
+          </a>
+         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Вход</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register-user') }}">Регистрация</a>
+                    </li>
+                    @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('signout') }}">Выход</a>
+                    </li>
+                    @endguest
+                </ul>
+         </li>
         
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Техподдержка
-          </a>
+          </a>      
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="https://github.com/artnazarov/nzcrm">NzCRM оn Github</a></li>
             <li><a class="dropdown-item" href="mailto:artem@nazarow.ru">Email автору</a></li>

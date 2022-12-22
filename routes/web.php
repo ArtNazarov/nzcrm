@@ -2,6 +2,22 @@
 
 use Illuminate\Support\Facades\Route;
 
+/* Auth */
+
+
+ 
+
+Route::get('dashboard', 'App\Http\Controllers\MyAuthController@dashboard'); 
+
+Route::get('login', 'App\Http\Controllers\MyAuthController@index')->name('login');
+Route::post('plogin', 'App\Http\Controllers\MyAuthController@plogin')->name('login.custom'); 
+
+Route::get('register', 'App\Http\Controllers\MyAuthController@register')->name('register-user');
+Route::post('pregister', 'App\Http\Controllers\MyAuthController@pregister')->name('register.custom');
+
+Route::get('signout', 'App\Http\Controllers\MyAuthController@signOut')->name('signout');
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
